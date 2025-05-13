@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dark To-Do App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="auth">
+    <h2>Login</h2>
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="login()">Login</button>
+    <button onclick="signup()">Sign Up</button>
+    <button onclick="googleLogin()">Login with Google</button>
+  </div>
+
+  <!-- APP SECTION -->
+  <div id="app" class="hidden">
+    <!-- Nav Bar -->
+    <div class="navbar">
+      <div class="logo">📝 To-Do</div>
+      <div class="profile-menu">
+        <img src="https://www.svgrepo.com/show/384674/account-avatar-profile-user-11.svg" class="profile-icon" onclick="toggleProfileMenu()">
+        <div class="dropdown hidden" id="profile-dropdown">
+          <p id="user-name">User</p>
+          <button onclick="logout()">Logout</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TASK FORM -->
+    <div class="task-form">
+      <input type="text" id="task-title" placeholder="Task Title">
+      <textarea id="task-desc" placeholder="Task Description"></textarea>
+      <input type="date" id="task-date">
+      <select id="task-status">
+        <option value="To Do">To Do</option>
+        <option value="In Progress">In Progress</option>
+        <option value="On Hold">On Hold</option>
+        <option value="Done">Done</option>
+      </select>
+      <button id="add-task-button" onclick="addTask()">Add Task</button>
+    </div>
+
+    <!-- TASK LIST -->
+    <div id="task-list"></div>
+  </div>
+
+  <!-- Load Firebase libraries first -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+
+  <!-- Then config -->
+  <script src="firebase-config.js"></script>
+
+  <!-- Then app logic -->
+  <script src="script.js"></script>
+</body>
+</html>
